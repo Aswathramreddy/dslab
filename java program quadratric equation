@@ -1,28 +1,43 @@
-import java.lang.*;
 import java.util.*;
+import java.lang.Math; 
 
-public class Quadraticequation {
-
-	public static void main(String args[])
+public class Main
+{
+	static void calc(double a, double b, double c)
+		{
+			double r,r1,r2,d;
+			d = (b*b)-(4*a*c);
+			if(d<0)
+			{
+				System.out.println("There are no real solutions");
+				
+			}
+			else if(d==0)
+			{
+				System.out.println("Roots are real and equal");
+				r= -b/(2*a);
+				System.out.println("Roots are "+r+" and "+r);
+			}
+			else
+			{
+				System.out.println("Roots are real and inequal");
+				r1= (-b + Math.sqrt(d))/(2*a);
+				r2= (-b - Math.sqrt(d))/(2*a);
+				System.out.println("Roots are ");
+				System.out.printf("%.4f and %.4f ",r1,r2);
+			}
+		}
+	public static void main(String[] args)
 	{
-	int a,b,c,d;
-	double e,f;
-	System.out.println("Enter a,b,c values");
-
-	Scanner sc = new Scanner(System.in);
-	a=sc.nextInt();
-	b=sc.nextInt();
-	c=sc.nextInt();
-	System.out.println("Enterd values are a="+a+" b="+b+" c="+c);
-	d=(b*b)-(4*a*c);
-	if(d<0)
-	{
-	  System.out.println("No real roots");
-	}else
-	{
-	e=((-b+Math.sqrt(d))/(2*a));
-	f=((-b-Math.sqrt(d))/(2*a));
-	System.out.println("Roots are "+e+" "+f);
+		Scanner sc= new Scanner(System.in);
+		System.out.print("Enter a value- ");
+		double a= sc.nextDouble();
+		System.out.print("Enter b value- ");
+		double b= sc.nextDouble();
+		System.out.print("Enter c value- ");
+		double c= sc.nextDouble();
+		calc(a,b,c);
+		
+		
 	}
-     }
 }
