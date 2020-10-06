@@ -1,0 +1,87 @@
+import java.util.*;
+class Student
+{
+	private String name;
+	private String usn;
+	private int n;
+	private int sum;
+	private int[] credits;
+	private int[] score;
+	private double[] marks;
+	
+	Student()
+	{
+		sum=0;
+	}
+
+	void getdata()
+	{
+		Scanner xx= new Scanner(System.in);
+		System.out.println("enter name");
+		name = xx.nextLine();
+		System.out.println("enter usn");
+		usn = xx.next();
+		System.out.println("enter no of subjects");
+		n = xx.nextInt();
+		credits=new int[n];
+		marks=new double[n];
+		score=new int[n];
+		int i;
+		for(i=0;i<n;i++)
+		{
+			System.out.println("enter credits for subject "+(i+1));
+			credits[i]= xx.nextInt();
+			System.out.println("enter marks for subject "+(i+1)+"(below 100)");
+			marks[i]= xx.nextDouble();
+			if(marks[i]>=90 && marks[i]<=100)
+			score[i]=10;
+			else if(marks[i]>=80)
+			score[i]=9;
+			else if(marks[i]>=70)
+			score[i]=8;
+			else if(marks[i]>=60)
+			score[i]=7;
+			else if(marks[i]>=50)
+			score[i]=5;
+			else if(marks[i]>=40)
+			score[i]=4;
+			else score[i]=0;
+			sum=sum+credits[i];
+		}
+	}
+	
+	private void calc(int[] credits, int[] score, int sum)
+	{
+		int i;
+		double sgpa,total=0.0;
+		for(i=0;i<n;i++)
+		{
+			
+			total= total+ (credits[i]*score[i]);
+		}
+		sgpa =total/sum;
+		System.out.printf("Sgpa is %.2f",sgpa);
+	}
+	void printdata()
+	{
+		System.out.println("Name = "+name);
+		System.out.println("Usn = "+usn);
+		int i;
+		for(i=0;i<n;i++)
+		{
+			System.out.println("Subject "+(i+1));
+			System.out.println("Credits = "+credits[i]+"   Marks = "+marks[i]);
+		}
+
+		calc(credits,score,sum);
+	}
+}
+
+public class lab3
+{
+	public static void main(String[] args)
+	{
+		Student s1=new Student();	
+		s1.getdata();
+		s1.printdata();
+	}
